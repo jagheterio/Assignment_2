@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Address Book" Height="450" Width="800">
 
+    <Grid Margin="20">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="20">
+            <TextBlock Text="FirstName" Style="{StaticResource TextBlockText}" />
+            <TextBox x:Name="tb_FirstName" />
+            <TextBlock Text="LastName" Style="{StaticResource TextBlockText}"/>
+            <TextBox x:Name="tb_LastName"/>
+            <TextBlock Text="Email" Style="{StaticResource TextBlockText}"/>
+            <TextBox x:Name="tb_Email"/>
+            
+
+            <Button x:Name="btn_Add" 
+                    Click="btn_Add_Click"
+                    Margin="0 10 0 0"
+                    Content="Add to Contact"
+                    Style="{StaticResource defaultButton}"/>
+
+            <Button x:Name="btn_Clear" 
+                    Click="btn_Clear_Click"
+                    Margin="0 10 0 0"
+                    Content="Clear Contact"
+                    Style="{StaticResource defaultButton}"/>
+        </StackPanel>
+
+        <ListView Grid.Column="1" x:Name="lv_Contacts" 
+                  SelectionChanged="lv_Contacts_SelectionChanged"
+                  HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding FullName}" />
+
+                        <Button x:Name="btn_lvItem_Remove" 
+                                Click="btn_lvItem_Remove_Click"
+                                Grid.Column="1"
+                                Margin="5 0"
+                                HorizontalAlignment="Right"
+                                Content="&#xE74D;"
+                                Style="{StaticResource deleteButton}"
+                                />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
