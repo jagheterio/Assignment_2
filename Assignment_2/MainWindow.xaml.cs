@@ -57,7 +57,7 @@ namespace Assignment_2
 
             else
             {
-                // If there is object in the list "contacts", contacts will be showed in the ListView. 
+                // Else, the contacts will be showed in the ListView. 
                 var item = (Contact)lv_Contacts.SelectedItem;
                 item.FirstName = tb_FirstName.Text;
                 item.LastName = tb_LastName.Text;
@@ -92,7 +92,7 @@ namespace Assignment_2
                 tb_LastName.Text = item.LastName;
                 tb_Email.Text = item.Email; 
             }
-            // Change the content of button "Add to Contact" to "Update".
+            // Changes the content of button "Add to Contact" to "Update".
             btn_Add.Content = "Update";
             _fileManager.Save(_filePath, JsonConvert.SerializeObject(contacts));
 
@@ -149,7 +149,7 @@ namespace Assignment_2
             }
             else
             {
-                // If the Email address exists, show the pop-up message.
+                // Else, show the pop-up message.
                 MessageBox.Show("Existing contact : Please check again.");
             }
 
